@@ -104,7 +104,23 @@ namespace GestoreEventi
                 }
             return PostiFinali;
             }
-
+        public int RimuoviPostiPrenotati(int PostiDaRimuovere)
+            {
+            if (this.DataEvento < DateTime.Now)
+                {
+                throw new Exception("Non puoi rimuovere posti per un evento gia avvenuto");
+                }
+            if (PostiDaRimuovere - PostiPrenotati < 0)
+                {
+                throw new Exception("Non puoi rimuovere un numero di posti maggiore dei posti prenotati!");
+                }
+            int PostiFinali = PostiPrenotati - PostiDaRimuovere;
+            return PostiFinali;
+            }
+        public override string ToString()
+            {
+            return this.GetNomeEvento() + " - " + GetDataEvento();
+            }
         }
     }
 
