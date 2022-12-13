@@ -19,9 +19,14 @@ namespace GestoreEventi
             }
         //------------------------------ Metodo get ------------------------------------
 
-        private string GetTitolo()
+        public string GetTitolo()
             {
             return this.Titolo;
+            }
+
+        public List<Evento> GetLista()
+            {
+            return this.ListaEventi;
             }
         //------------------------------ Metodi lista ------------------------------------
 
@@ -45,7 +50,7 @@ namespace GestoreEventi
             return ListaPerData;
             }
         //Metodo per portare a stringa una data lista
-        public static string StampaListaPerData(List<Evento> ListaInserita)
+        public static string ReturnListaPerData(List<Evento> ListaInserita)
             {
             string ListaAStringa = string.Join("\n", ListaInserita);
             return ListaAStringa;
@@ -59,9 +64,9 @@ namespace GestoreEventi
             }
 
         //Metodo per svuotare lista
-        public void SvuotaLista(List<Evento> ListaEventi)
+        public void SvuotaLista()
             {
-            ListaEventi.Clear();
+            this.ListaEventi.Clear();
             }
         //Metodo stampa programma eventi
         public void StampaProgramma()

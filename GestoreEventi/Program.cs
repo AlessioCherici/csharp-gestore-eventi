@@ -1,6 +1,7 @@
 ﻿
 using GestoreEventi;
 using System;
+using System.Globalization;
 using System.Runtime.CompilerServices;
 
 
@@ -9,7 +10,7 @@ using System.Runtime.CompilerServices;
 Console.WriteLine("Inserisci il Nome dell'evento!");
 string NomeEvento = Console.ReadLine();
 
-Console.WriteLine("Inserisci la data dell'evento!(gg/mm/aaaa");
+Console.WriteLine("Inserisci la data dell'evento!(gg/mm/aaaa)");
 string DataEvento = Console.ReadLine();
 
 Console.WriteLine("Inserisci la capienza in posti dell'evento!");
@@ -69,6 +70,41 @@ while (CheckDisdire == "si")
 
 Console.WriteLine("Inserisci il nome del Programma Eventi!");
 string Titolo = Console.ReadLine();
+
+ProgrammaEventi Programma1 = new ProgrammaEventi(Titolo);
+
+Console.WriteLine("Quanti Eventi vuoi aggiungere?");
+int NumeroEventiDaAggiungere = int.Parse(Console.ReadLine());
+
+while (Programma1.GetLista().Count != NumeroEventiDaAggiungere)
+    {
+
+    Console.WriteLine("Inserisci il Nome dell'evento!");
+    string Nome = Console.ReadLine();
+
+    Console.WriteLine("Inserisci la data dell'evento!(gg/mm/aaaa)");
+    string Data = Console.ReadLine();
+
+    Console.WriteLine("Inserisci la capienza in posti dell'evento!");
+    int Capienza = int.Parse(Console.ReadLine());
+
+    Evento EventoUtente = new Evento(Nome, Data, Capienza, 0);
+
+    Programma1.AggiungiEvento(EventoUtente);
+    }
+
+Console.WriteLine("Inserisci la data in cui vuoi ricercare un evento!(gg/mm/aaaa)");
+string DataInserita = Console.ReadLine();
+DateTime DataConvertita = DateTime.ParseExact(DataInserita, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+ List<Evento> ListaEventiTrovatiInData = Programma1.ElencaEventiInData(DataConvertita);
+
+string StringaRicercata = ProgrammaEventi.ReturnListaPerData(ListaEventiTrovatiInData);
+
+Console.WriteLine(StringaRicercata);
+
+Programma1.SvuotaLista();
+
 
 
 
