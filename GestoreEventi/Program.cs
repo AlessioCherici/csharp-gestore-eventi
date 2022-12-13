@@ -9,7 +9,7 @@ using System.Runtime.CompilerServices;
 Console.WriteLine("Inserisci il Nome dell'evento!");
 string NomeEvento = Console.ReadLine();
 
-Console.WriteLine("Inserisci la data dell'evento!");
+Console.WriteLine("Inserisci la data dell'evento!(gg/mm/aaaa");
 string DataEvento = Console.ReadLine();
 
 Console.WriteLine("Inserisci la capienza in posti dell'evento!");
@@ -64,6 +64,18 @@ while (CheckDisdire == "si")
     Console.WriteLine("Vuoi disdire altri prosti? Inserisci \"si\" o \"no\" ");
     CheckDisdire = Console.ReadLine().ToLower();
     }
+
+//Inizio richiesta input utente per ProgrammaEventi
+
+Console.WriteLine("Inserisci il nome del Programma Eventi!");
+string Titolo = Console.ReadLine();
+
+
+
+
+
+
+
 
 
 
