@@ -43,7 +43,7 @@ namespace GestoreEventi
         //--------------------------------- Metodi set ---------------------------------
         public void SetNomeEvento(string NomeEvento)
             {
-            if (string.IsNullOrEmpty(NomeEvento))
+            if (string.IsNullOrWhiteSpace(NomeEvento))
                 {
                 throw new Exception("Il nome evento non può essere vuoto!");
                 }
@@ -87,7 +87,7 @@ namespace GestoreEventi
             }
         //------------------------------- Metodi prenotazione --------------------------------
 
-        public int PrenotaPosti(int PostiAggiunti) 
+        public void PrenotaPosti(int PostiAggiunti) 
             {
             if (this.DataEvento < DateTime.Now)
                 {
@@ -102,7 +102,7 @@ namespace GestoreEventi
                 {
                 throw new Exception("Hai raggiunto il numero massimo di posti prenotabili, probabilmente l'evento è pieno");
                 }
-            return PostiFinali;
+            this.PostiPrenotati = PostiFinali;
             }
         public int RimuoviPostiPrenotati(int PostiDaRimuovere)
             {
