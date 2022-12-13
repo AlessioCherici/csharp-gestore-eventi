@@ -104,18 +104,18 @@ namespace GestoreEventi
                 }
             this.PostiPrenotati = PostiFinali;
             }
-        public int RimuoviPostiPrenotati(int PostiDaRimuovere)
+        public void RimuoviPostiPrenotati(int PostiDaRimuovere)
             {
             if (this.DataEvento < DateTime.Now)
                 {
                 throw new Exception("Non puoi rimuovere posti per un evento gia avvenuto");
                 }
-            if (PostiDaRimuovere - PostiPrenotati < 0)
+            if (PostiPrenotati - PostiDaRimuovere < 0)
                 {
                 throw new Exception("Non puoi rimuovere un numero di posti maggiore dei posti prenotati!");
                 }
             int PostiFinali = PostiPrenotati - PostiDaRimuovere;
-            return PostiFinali;
+            this.PostiPrenotati = PostiFinali;
             }
         public override string ToString()
             {

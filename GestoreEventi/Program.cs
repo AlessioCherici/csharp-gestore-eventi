@@ -4,6 +4,8 @@ using System;
 using System.Runtime.CompilerServices;
 
 
+//inizio richiesta input utente
+
 Console.WriteLine("Inserisci il Nome dell'evento!");
 string NomeEvento = Console.ReadLine();
 
@@ -17,7 +19,9 @@ Evento Evento1 = new Evento(NomeEvento, DataEvento, CapienzaMassima, 0);
 
 Console.WriteLine(Evento1.GetNomeEvento() + " " + Evento1.GetDataEvento() + " " + Evento1.GetCapienzaEvento() + " " + Evento1.GetPostiPrenotati());
 
-Console.WriteLine("Vuoi inserire delle prenotazioni? Inserisci si/no");
+//inizio richiesta inserimento prenotazione
+
+Console.WriteLine("Vuoi inserire delle prenotazioni? Inserisci \"si\" o \"no\"");
 
 string CheckPrenotazioni = Console.ReadLine().ToLower();
 
@@ -34,6 +38,34 @@ if (CheckPrenotazioni == "si")
     Evento1.PrenotaPosti(PostiAggiunti);
     }
 
-Console.WriteLine(Evento1.GetPostiPrenotati());
+
+
+int PostiDisponibili = Evento1.GetCapienzaEvento() - Evento1.GetPostiPrenotati();
+
+Console.WriteLine("I posti prenotati sono: " + Evento1.GetPostiPrenotati());
+Console.WriteLine("I posti rimanenti sono: " + PostiDisponibili);
+
+Console.WriteLine("Vuoi disdire dei posti? Inserisci \"si\" o \"no\"");
+string CheckDisdire = Console.ReadLine().ToLower();
+while (CheckDisdire != "si" && CheckDisdire != "no")
+    {
+    Console.WriteLine("Input errato, inserisci si/no");
+    CheckDisdire = Console.ReadLine().ToLower();
+    }
+
+while (CheckDisdire == "si")
+    {
+    Console.WriteLine("Inserisci il numero di posti da disdire!");
+    int PostiRimossi = int.Parse(Console.ReadLine());
+    Evento1.RimuoviPostiPrenotati(PostiRimossi);
+    Console.WriteLine("I posti prenotati sono: " + Evento1.GetPostiPrenotati());
+    PostiDisponibili = Evento1.GetCapienzaEvento() - Evento1.GetPostiPrenotati();
+    Console.WriteLine("I posti rimanenti sono: " + PostiDisponibili);
+    Console.WriteLine("Vuoi disdire altri prosti? Inserisci \"si\" o \"no\" ");
+    CheckDisdire = Console.ReadLine().ToLower();
+    }
+
+
+
 
 
