@@ -1,4 +1,2 @@
 ﻿
-using GestoreEventi;
-
-
+Console.WriteLine("Hello world!");
